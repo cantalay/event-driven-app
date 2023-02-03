@@ -150,21 +150,7 @@
             <el-table-column prop="action" label="Action" width="200" />
             <el-table-column prop="type" label="Type" />
             <el-table-column prop="userName" label="User Name" />
-            <el-table-column prop="todoId" label="Todo ID">
-              <template #default="scope">
-                <div style="display: flex; align-items: center">
-                  <span
-                    style="
-                      color: cornflowerblue;
-                      text-decoration: underline;
-                      cursor: pointer;
-                    "
-                    @click="setTodoId(scope.row.todoId)"
-                    >{{ scope.row.todoId }}</span
-                  >
-                </div>
-              </template>
-            </el-table-column>
+            <el-table-column prop="todoId" label="Todo ID"> </el-table-column>
           </el-table>
           <el-pagination
             class="paginator"
@@ -204,15 +190,6 @@ const todoItemId = ref<string>();
 onMounted(() => {
   getAuditLog();
 });
-
-const props = defineProps({
-  todoItemId: { type: String, required: true },
-});
-
-const setTodoId = (value: any) => {
-  dialogStore.openTodoDetailDialog();
-  props.todoItemId = value;
-};
 
 const auditFilter = reactive<AuditLogFilterDto>({
   actions: [],
