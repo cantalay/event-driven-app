@@ -1,15 +1,36 @@
 import { useAuditLogHttp } from "@/service/http.service";
 import { reactive } from "vue";
 import type { LoginRequestDto } from "@/interface/dto/login-request.dto";
-import type { LoginResponseDto } from "@/interface/dto/login-response.dto";
+import { useAuthStore } from "@/stores/user-store";
+import type { RegisterRequestDto } from "@/interface/dto/register-request.dto";
+
 class AuthService {
-  constructor(private readonly httpService = useAuditLogHttp()) {}
-  async getDatafromhttp(user: LoginRequestDto): Promise<LoginResponseDto> {
-    const result = await this.httpService.post<any>("auth/login", {
-      username: user.username,
+  constructor(
+    private readonly httpService = useAuditLogHttp(),
+    private readonly authStore = useAuthStore()
+  ) {}
+
+  async login(user: LoginRequestDto) {
+    return this.httpService
+      .post<any>("auth/login", {
+        username: user.username,
+        password: user.password,
+      })
+      .then((response) => {
+        this.authStore.login({
+          fullName: response.data.fullName,
+          userName: response.data.userName,
+          jwtToken: response.data.token,
+        });
+      });
+  }
+
+  async register(user: RegisterRequestDto) {
+    return this.httpService.post<any>("auth/register", {
+      userName: user.userName,
       password: user.password,
+      fullName: user.fullName,
     });
-    return result.data as LoginResponseDto;
   }
 }
 

@@ -7,7 +7,7 @@ class AuditService {
   constructor(private readonly httpService = useAuditLogHttp()) {}
 
   async getAuditLogData(auditLogFilter: AuditLogFilterDto) {
-    const result = await this.httpService
+    return await this.httpService
       .post("auditlog", auditLogFilter)
       .then((response) => {
         return {
@@ -15,11 +15,19 @@ class AuditService {
           count: response.data.count as number,
         };
       });
-    return result;
+  }
+
+  async getQueryData(query: string) {
+    return await this.httpService
+      .get("auditlog/queryItems", { params: { q: query } })
+      .then((response) => {
+        return response.data;
+      });
   }
 }
 
 let GLOBAL_AUDIT_SERVICE: AuditService | null = null;
+
 function useAuditService() {
   if (GLOBAL_AUDIT_SERVICE === null) {
     GLOBAL_AUDIT_SERVICE = new AuditService();

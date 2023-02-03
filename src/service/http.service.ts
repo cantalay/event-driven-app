@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const APIKEY = "Bearer d1rct5pw0jjpmpblmsukiqgwmioxyx3ng74ey8bo";
-
+//TODO: Change here to BE host and port
 const axiosInstance = axios.create({
   baseURL: "http://127.0.0.1:3000",
   /*

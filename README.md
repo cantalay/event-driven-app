@@ -1,45 +1,48 @@
-# event-driven-app
-
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
 ## Project Setup
 
-```sh
-pnpm install
-```
+###Welcome to VueJS 3 todo app project! 
 
-### Compile and Hot-Reload for Development
+This project is built using VueJS 3, pnpm (Fast, disk space efficient package manager), and Vite (a fast, zero-config development server for JavaScript).
+
+###Getting Started
+To get started with this project, you will need to have Node.js and pnpm installed on your system. If you don't have them, you can download the latest version of Node.js from the official website: https://nodejs.org/ and install pnpm by running the following command:
+```sh
+$ npm install -g pnpm
+```
+Once you have Node.js and pnpm installed, clone this repository and navigate to the project folder:
+
+```sh
+$ git clone https://github.com/cantalay/event-driven-app.git
+$ cd event-driven-app
+```
+Next, install the project dependencies by running the following command:
+```sh
+$ pnpm install
+```
+##Running the Project
+Before running the project, you may need to change backend-service host and port address. ('/service/http.service.ts'')
+You can find it by searching the following lines at whole project: 
+```
+//TODO: Change here to BE host and port
+```
+To run the project, you can use the following command:
 
 ```sh
 pnpm dev
 ```
+This will start the Vite development server, which will compile and serve the project on http://localhost:3001 by default.You can change PORT under 'server' path from 'vite.config.ts' file. You can access the application in your browser at this URL.
 
-### Type-Check, Compile and Minify for Production
+### Type-Check, Compile and Building the Project(OPTIONAL)
 
+To build the project for production, you can use the following command:
 ```sh
 pnpm build
 ```
+This will create a production-ready build in the dist directory.
 
-### Lint with [ESLint](https://eslint.org/)
+
+
+### Lint with [ESLint](https://eslint.org/) (OPTIONAL)
 
 ```sh
 pnpm lint

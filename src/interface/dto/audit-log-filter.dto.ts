@@ -3,8 +3,8 @@ import type { AuditlogTypeEnum } from "@/enum/auditlog-type.enum";
 
 export interface AuditLogFilterDto {
   actions?: ActionTypeEnum[];
-  types?: AuditlogTypeEnum[];
-  users?: string[];
+  type?: AuditlogTypeEnum[];
+  userName?: string;
   todoId?: string;
   pagination?: { page: number; pageSize: number };
 }
